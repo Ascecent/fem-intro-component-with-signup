@@ -1,19 +1,14 @@
 import { createForm, createSubmitButton } from "./Form";
-
 import { getInputs } from "./Utils";
-
 import {
   handleRegexValidation,
   checkBtn,
   resetFormControls,
 } from "./Validations";
-
 import { fields } from "./Data";
-
-import Swal from "sweetalert2";
-
+import Swal from "sweetalert2/dist/sweetalert2.js";
 import { controlBtn } from "./Validations";
-
+import "sweetalert2/src/sweetalert2.scss";
 import "Styles";
 
 // Form container
@@ -61,7 +56,7 @@ form.addEventListener("submit", function (e) {
     Swal.fire({
       icon: "error",
       title: "Bad signup",
-      text: "Wha are you doing buddy? We are going to send the FBI to your home.",
+      text: "What are you doing buddy? We are going to send the FBI to your home.",
     });
   }
 });
