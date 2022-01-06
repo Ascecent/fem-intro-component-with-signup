@@ -1,0 +1,22 @@
+/*=========================================================
+================      LAYOUT STYLES       =================
+=========================================================*/
+
+body {
+  @include media-breakpoint-up(lg) {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Intro section
+.intro {
+  @include media-breakpoint-up(lg) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: pxToRem(29);
+    align-items: center;
+  }
+}

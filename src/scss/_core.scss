@@ -1,0 +1,134 @@
+@use "sass:math";
+
+/*=========================================================
+================       CORE STYLES        =================
+=========================================================*/
+
+// -------------------------------
+// FUNCTIONS
+// -------------------------------
+
+// Convert px to rem units
+@function pxToRem($unit) {
+  @return math.div($unit, 16) + rem;
+}
+
+// -------------------------------
+
+// -------------------------------
+// VARIABLES
+// -------------------------------
+
+// ------------
+// BREAKPOINTS
+// ------------
+
+$breakpoints: (
+  xsm: 400px,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xlg: 1400px,
+);
+
+// ------------
+
+// ------------
+// COLORS
+// ------------
+
+// Primary
+$red: hsl(0, 100%, 74%);
+$green: hsl(154, 59%, 51%);
+
+// Accent
+$blue: hsl(248, 32%, 49%);
+
+// Neutral
+$darkBlue: hsl(248, 10%, 26%);
+$grayishBlue: hsl(246, 25%, 77%);
+$black: hsl(0, 0%, 0%);
+$white: hsl(0, 0%, 100%);
+
+$blueVariant: hsl(281, 28%, 42%);
+$greenVariant: hsl(153, 40%, 54%);
+
+// ------------
+
+// ------------
+// FONTS
+// ------------
+
+// Family
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+$fontFamilyPoppins: "Poppins", sans-serif;
+
+// Size
+$fontSizeNormal: 1rem;
+$fontSizeMainHeadingSm: pxToRem(28);
+$fontSizeMainHeadingLg: pxToRem(50);
+
+// Weights
+$fontWeightLight: 300;
+$fontWeightRegular: 400;
+$fontWeightMedium: 500;
+$fontWeightSemiBold: 600;
+$fontWeightBold: 700;
+
+// ------------
+
+// -------------------------------
+
+// -------------------------------
+// MIXINS
+// -------------------------------
+
+// Media breakpoint min-width
+@mixin media-breakpoint-up($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+// Media breakpoint max-width
+@mixin media-breakpoint-down($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+// -------------------------------
+
+// -------------------------------
+// GLOBAL STYLES
+// -------------------------------
+
+body {
+  color: $white;
+  font: {
+    size: $fontSizeNormal;
+    weight: $fontWeightRegular;
+    family: $fontFamilyPoppins;
+  }
+
+  background: url("Images/bg-intro-mobile.png") $red center/cover no-repeat;
+
+  @include media-breakpoint-up(lg) {
+    background-image: url("Images/bg-intro-desktop.png");
+  }
+}
+
+// -------------------------------

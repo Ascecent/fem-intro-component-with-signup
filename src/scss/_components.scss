@@ -1,0 +1,294 @@
+/*=========================================================
+================     COMPONENTS STYLES    =================
+=========================================================*/
+
+// Icons
+.icon {
+  width: pxToRem(24);
+  height: pxToRem(24);
+
+  &--success {
+    background-image: url("Images/icon-success.svg");
+  }
+
+  &--error {
+    background-image: url("Images/icon-error.svg");
+  }
+}
+
+// Intro styles
+.intro {
+  padding: pxToRem(91) pxToRem(24) pxToRem(67);
+  text-align: center;
+  max-width: pxToRem(700);
+  margin-inline: auto;
+
+  &__heading {
+    font: {
+      weight: $fontWeightBold;
+      size: clamp($fontSizeMainHeadingSm, 5vw, $fontSizeMainHeadingLg);
+    }
+
+    line-height: pxToRem(36);
+    letter-spacing: -0.01em;
+
+    margin-block: 0 pxToRem(22);
+
+    @include media-breakpoint-up(lg) {
+      line-height: pxToRem(55);
+      letter-spacing: -0.01em;
+      margin-block-end: pxToRem(28);
+      word-spacing: pxToRem(-9);
+    }
+  }
+
+  &__description {
+    line-height: pxToRem(26);
+    letter-spacing: 0.01em;
+    margin-block: 0 pxToRem(63);
+
+    @include media-breakpoint-up(lg) {
+      margin: 0;
+    }
+  }
+
+  &__discount {
+    background-color: $blue;
+    border-radius: pxToRem(11);
+    border: 1px solid $blueVariant;
+
+    line-height: pxToRem(26);
+
+    margin-block: 0 pxToRem(24);
+
+    padding: pxToRem(18) pxToRem(68) pxToRem(16);
+    position: relative;
+
+    &::before {
+      content: "";
+      border-radius: pxToRem(11);
+      background-color: hsla(0, 0%, 0%, 0.2);
+      outline: 1px solid hsla(0, 0%, 0%, 0.2);
+
+      inset: 0;
+      position: absolute;
+      transform: translateY(0.5rem);
+      z-index: -1;
+    }
+
+    span {
+      font-weight: $fontWeightBold;
+    }
+  }
+
+  &__signup-form-wrapper {
+    padding: pxToRem(24);
+    background-color: $white;
+    border-radius: pxToRem(9);
+    color: $black;
+    position: relative;
+
+    &::before {
+      content: "";
+      border-radius: pxToRem(11);
+      background-color: hsla(0, 0%, 0%, 0.2);
+
+      inset: 0;
+      position: absolute;
+      transform: translateY(0.5rem);
+      z-index: -1;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding: pxToRem(40);
+      max-width: pxToRem(540);
+    }
+  }
+
+  &__terms {
+    margin-block: pxToRem(10) 0;
+    padding-inline: pxToRem(10);
+    color: $grayishBlue;
+
+    letter-spacing: 0.02em;
+    line-height: pxToRem(21);
+    font-size: pxToRem(12);
+
+    a {
+      text-decoration: none;
+      font-weight: $fontWeightBold;
+      color: $red;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    text-align: start;
+    padding: 0;
+    max-width: pxToRem(1110);
+  }
+}
+
+//-------------------------
+// Form styling
+//-------------------------
+
+// Custom placeholder
+.input__placeholder {
+  position: absolute;
+  top: pxToRem(20);
+  left: pxToRem(16);
+
+  font: {
+    size: pxToRem(14);
+    weight: $fontWeightSemiBold;
+  }
+
+  background-color: $white;
+  color: $darkBlue;
+  letter-spacing: 0.035em;
+
+  transition: top 0.1s ease, font-size 0.1s ease, left 0.1s ease,
+    padding 0.1s ease;
+
+  @include media-breakpoint-up(lg) {
+    left: pxToRem(32);
+  }
+}
+
+// Feedback message
+.feedback-message {
+  margin-block: pxToRem(8) 0;
+  display: none;
+  visibility: hidden;
+  color: $red;
+}
+
+/* Styles for the inputs of the form */
+.form__input {
+  border: none;
+  border-radius: 0.1rem;
+
+  caret-color: $blue;
+
+  color: $darkBlue;
+
+  font: {
+    size: pxToRem(14);
+    weight: $fontWeightSemiBold;
+  }
+
+  padding: pxToRem(19) pxToRem(55) pxToRem(18) pxToRem(18);
+  outline: 1px solid $grayishBlue;
+  width: 100%;
+
+  &:focus ~ .input__placeholder,
+  &:not(:placeholder-shown) ~ .input__placeholder {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+    left: 0.5rem;
+    top: pxToRem(-16);
+  }
+
+  &:disabled {
+    background-color: #e0e0e0;
+    outline-color: #e0e0e0;
+
+    & ~ .input__placeholder {
+      left: -0.5rem;
+      top: -1rem;
+      color: $darkBlue;
+      font-size: 0.9rem;
+      padding: 0.3rem 0.5rem;
+      background-color: transparent;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-left: pxToRem(32);
+  }
+}
+
+// Form element
+.form-element__container {
+  position: relative;
+  width: 100%;
+  text-align: end;
+  margin-bottom: pxToRem(16);
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: pxToRem(20);
+  }
+
+  & .icon {
+    position: absolute;
+    top: pxToRem(15);
+    right: pxToRem(24);
+    visibility: hidden;
+  }
+
+  // Success states
+  &.success {
+    .form__input {
+      outline: 2px solid $green;
+    }
+
+    .input__placeholder {
+      color: $green;
+    }
+
+    .icon {
+      &--success {
+        visibility: visible;
+      }
+    }
+  }
+
+  // Error states
+  &.error {
+    .form__input {
+      outline: 2px solid currentColor;
+      color: $red;
+    }
+
+    .input__placeholder {
+      color: $red;
+    }
+
+    .feedback-message,
+    .icon--error {
+      visibility: visible;
+    }
+
+    .feedback-message {
+      display: block;
+    }
+  }
+}
+
+/* Submit button styling */
+.form-element__submit-button {
+  background: $green;
+  border-radius: pxToRem(5);
+  border: 1px solid $greenVariant;
+  border-bottom-width: 2px;
+
+  color: $white;
+  cursor: pointer;
+
+  letter-spacing: 0.01em;
+
+  margin-top: pxToRem(16);
+
+  padding: pxToRem(20);
+
+  font: {
+    weight: $fontWeightBold;
+    size: pxToRem(15);
+  }
+  width: 100%;
+
+  &.disabled {
+    background: rgb(134, 199, 181);
+    cursor: default;
+  }
+}
