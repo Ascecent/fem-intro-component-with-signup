@@ -55,13 +55,7 @@ const plugins = [
 const rules = [rulesForSassStyles, rulesForAssets];
 
 module.exports = {
-  entry: {
-    app: "./src/js/App.js",
-    utils: "./src/js/Utils.js",
-    form: "./src/js/Form.js",
-    validations: "./src/js/Validations.js",
-  },
-
+  entry: "./src/js/App.js",
   output: {
     filename: "[name][contenthash].bundle.js",
     path: path.resolve(__dirname, "build"),
